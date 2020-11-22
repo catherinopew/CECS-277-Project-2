@@ -83,9 +83,9 @@ public class Main {
             }
             else if (map.getCharAtLoc(hero.getLocation()) == 's') { //starting point
                 System.out.println("You're back at the start. Would you like to" +
-                " visit the store? (Y/N)");
+                " visit the store? (Y/N)"); //option for user to visit store
                 boolean storeChoice = CheckInput.getYesNo();
-                if (storeChoice == true) {
+                if (storeChoice == true) { //visits store if user picks yes
                     store(hero);
                 }
             }
@@ -319,6 +319,9 @@ public class Main {
         }
     }
 
+    /** Simulates a store where the hero can buy items or sell items
+     * @param h the hero
+     */
     public static void store(Hero h) {
         System.out.println("Welcome to the store!");
         System.out.println("What would you like to do?");
