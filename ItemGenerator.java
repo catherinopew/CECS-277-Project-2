@@ -7,6 +7,8 @@ import java.io.FileNotFoundException;
 public class ItemGenerator {
     /** An ArrayList of the items */
     private ArrayList <Item> itemList = new ArrayList <Item> ();
+    /** The instance of the class*/
+    private static ItemGenerator instance = null;
 
     /** Reads from the ItemList.txt file 
      * and adds each item to the ArrayList, itemList
@@ -23,6 +25,15 @@ public class ItemGenerator {
         catch (FileNotFoundException e) {
             System.out.println("File Not Found - place in project folder");
         }
+    }
+     /** Checks for the instance of the ItemGenerator and making sure that 
+      * the object has not already been created
+      */
+    public static ItemGenerator getInstance(){
+        if (instance == null){
+            instance = new ItemGenerator();
+        }
+        return instance; 
     }
 
     /** Randomly generates an item from the ArrayList

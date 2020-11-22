@@ -8,13 +8,21 @@ public class Map {
   private char [][] map;
   /** A 2D array of boolean values */
   private boolean [][] revealed;
+  /** The instance of the class*/
+  private static Map instance = null; 
 
   /** Constructs a 5 x 5 map and 5 x 5 revealed */
   public Map() {
     map = new char [5][5];
     revealed = new boolean [5][5];
   }
-
+  /** Checks for the instance of the map and making sure that the object has not already been created*/
+  public static Map getInstance(){
+        if (instance == null){
+            instance = new Map();
+        }
+        return instance; 
+  }
   /** Reads in and loads the appropriate map file given the map number
    * and fills the 2D array with values
    * @param mapNum the map number
