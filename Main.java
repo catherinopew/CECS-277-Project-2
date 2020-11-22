@@ -82,7 +82,12 @@ public class Main {
                 System.out.println("There was nothing here.");
             }
             else if (map.getCharAtLoc(hero.getLocation()) == 's') { //starting point
-                System.out.println("You're back at the start.");
+                System.out.println("You're back at the start. Would you like to" +
+                " visit the store? (Y/N)");
+                boolean storeChoice = CheckInput.getYesNo();
+                if (storeChoice == true) {
+                    store(hero);
+                }
             }
             else if (map.getCharAtLoc(hero.getLocation()) == 'f') { //finishing point
                 System.out.println("You've completed level " + level + ".");
@@ -311,6 +316,36 @@ public class Main {
         if (h.pickUpItem(item) == true) {
             System.out.println("You've picked up a " + item.getName() + ".");
             m.removeCharAtLoc(h.getLocation());
+        }
+    }
+
+    public static void store(Hero h) {
+        System.out.println("Welcome to the store!");
+        System.out.println("What would you like to do?");
+        System.out.println("1. Buy an Item\n2. Sell an Item\n3. Quit");
+        int choice = CheckInput.getIntRange(1, 2);
+
+        if (choice == 1) {
+            System.out.println("Which item would you like to buy?");
+            System.out.println("1. Key - 200 Gold\n2. Health Potion - 100 Gold");
+            int buyChoice = CheckInput.getIntRange(1, 2);
+            if (buyChoice == 1) {
+                Item item = new Item("Key");
+                h.pickUpItem(item);
+            }
+            else if (buyChoice == 2) {
+                Item item = new Item("Health Potion");
+                h.pickUpItem(item);
+            }
+        }
+        else if (choice == 2) {
+            System.out.println("Which item number would you like to sell? " +
+            "\n" + h.itemsToString());
+            int itemNum = CheckInput.getIntRange(1, h.getNumItems());
+            h.dropItem(itemNum);
+        }
+        else if (choice == 3) {
+            System.out.println("Thank you and have a nice day!");
         }
     }
 }
