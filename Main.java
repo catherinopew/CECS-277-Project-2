@@ -51,6 +51,24 @@ public class Main {
                     System.out.println("You defeated the " + enemy.getName() + "!");
                     System.out.println("It dropped a " + enemy.getItem().getName() + ".");
                     map.removeCharAtLoc(hero.getLocation());
+
+                    if (hero.getNumItems() == 5) {
+                        System.out.println("Your inventory is full. Do you still want " + 
+                        "to pick up this item (Y/N)? ");
+                        boolean itemChoice = CheckInput.getYesNo();
+                        if (itemChoice == true) { //ask if user wants to replace an item
+                            System.out.println("Which item number would you like to drop? " +
+                            "\n" + hero.itemsToString()); //show them the current inventory
+                            int itemNum = CheckInput.getIntRange(1, 5);
+                            hero.dropItem(itemNum - 1);
+                            System.out.println("You've chosen to drop an item and replaced it with a " 
+                            + enemy.getItem().getName() + "."); //display message of what they dropped
+                        }
+                        else { //otherwise, display message that user chose to not replace anything
+                            System.out.println("You've chosen to not replace any of " + 
+                            "your inventory items.");
+                        }
+                    }
                     if (hero.pickUpItem(enemy.getItem()) == true) {
                         System.out.println("You received a " + enemy.getItem().getName() + 
                         " from its corpse.");
@@ -272,8 +290,25 @@ public class Main {
     public static void itemRoom(Hero h, Map m, ItemGenerator ig) {
         Item item = ig.generateItem();
         System.out.println("You found a " + item.getName() + ".");
-        boolean itemPickUp = h.pickUpItem(item);
-        if (itemPickUp == true) {
+
+        if (h.getNumItems() == 5) {
+            System.out.println("Your inventory is full. Do you still want " + 
+            "to pick up this item (Y/N)? ");
+            boolean itemChoice = CheckInput.getYesNo();
+            if (itemChoice == true) { //ask if user wants to replace an item
+                System.out.println("Which item number would you like to drop? " +
+                "\n" + h.itemsToString()); //show them the current inventory
+                int itemNum = CheckInput.getIntRange(1, 5);
+                System.out.println("You've chosen to drop an item and replaced it with a " 
+                + item.getName() + "."); //display message of what they dropped
+                h.dropItem(itemNum - 1);
+            }
+            else { //otherwise, display message that user chose to not replace anything
+                System.out.println("You've chosen to not replace any of " + 
+                "your inventory items.");
+            }
+        }
+        if (h.pickUpItem(item) == true) {
             System.out.println("You've picked up a " + item.getName() + ".");
             m.removeCharAtLoc(h.getLocation());
         }

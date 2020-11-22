@@ -59,25 +59,6 @@ public class Hero extends Entity implements Magical {
             items.add(i);
             pickUp = true;
         }
-        else { 
-            System.out.println("Your inventory is full. Do you still want " + 
-            "to pick up this item (Y/N)? ");
-            boolean choice = CheckInput.getYesNo();
-            if (choice == true) { //ask if user wants to replace an item
-                System.out.println("Which item number would you like to drop? " +
-                "\n" + itemsToString()); //show them the current inventory
-                int itemChoice = CheckInput.getIntRange(1, 5);
-                System.out.println("You've chosen to drop a " + items.get(itemChoice - 1).getName() 
-                + " and replaced it with a " + i.getName() + "."); //display message of what they dropped
-                dropItem(itemChoice - 1);
-                items.add(i);
-                pickUp = true;
-            }
-            else { //otherwise, display message that user chose to not replace anything
-                System.out.println("You've chosen to not replace any of " + 
-                "your inventory items.");
-            }
-        }
         return pickUp;
     }
 
