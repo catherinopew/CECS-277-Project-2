@@ -326,7 +326,7 @@ public class Main {
         System.out.println("Welcome to the store!");
         System.out.println("What would you like to do?");
         System.out.println("1. Buy an Item\n2. Sell an Item\n3. Quit");
-        int choice = CheckInput.getIntRange(1, 2);
+        int choice = CheckInput.getIntRange(1, 3);
 
         if (choice == 1) {
             System.out.println("Which item would you like to buy?");
