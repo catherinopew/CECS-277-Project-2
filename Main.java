@@ -345,7 +345,41 @@ public class Main {
             System.out.println("Which item number would you like to sell? " +
             "\n" + h.itemsToString());
             int itemNum = CheckInput.getIntRange(1, h.getNumItems());
-            h.dropItem(itemNum);
+
+            if (h.dropItem(itemNum).getName().equals("Health Potion")) {
+                h.collectGold(25); //replace argument 
+                //with h.dropItem(itemNum).getValue() once u create that in Item
+            }
+            else if (h.dropItem(itemNum).getName().equals("Key")) {
+                h.collectGold(50);
+            }
+            else if (h.dropItem(itemNum).getName().equals("Bag o' Gold")) {
+                h.collectGold(15);
+            }
+            else if (h.dropItem(itemNum).getName().equals("Gem")) {
+                h.collectGold(10);
+            }
+            else if (h.dropItem(itemNum).getName().equals("Shield")) {
+                h.collectGold(5);
+            }
+            else if (h.dropItem(itemNum).getName().equals("Helm")) {
+                h.collectGold(7);
+            }
+            else if (h.dropItem(itemNum).getName().equals("Belt")) {
+                h.collectGold(3);
+            }
+            else if (h.dropItem(itemNum).getName().equals("Ring")) {
+                h.collectGold(8);
+            }
+            else if (h.dropItem(itemNum).getName().equals("Gloves")) {
+                h.collectGold(4);
+            }
+            else if (h.dropItem(itemNum).getName().equals("Boots")) {
+                h.collectGold(4);
+            }
+            else if (h.dropItem(itemNum).getName().equals("Ringmail")) {
+                h.collectGold(9);
+            }
         }
         else if (choice == 3) {
             System.out.println("Thank you and have a nice day!");
