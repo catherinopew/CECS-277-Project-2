@@ -225,14 +225,21 @@ public class Hero extends Entity implements Magical {
         + damage + " damage.";
     }
 
+    /** Returns the hero's current amount of gold */
     public int getGold() {
         return gold;
     }
 
+    /** Collects and adds to amount of gold 
+     * @param g the amount of gold to add
+     */
     public void collectGold(int g) {
         gold += g;
     }
 
+    /** Spends and reduces amount of gold 
+     * @param g the amount of gold to spend
+     */
     public void spendGold(int g) {
         gold -= g;
     }
