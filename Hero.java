@@ -11,6 +11,8 @@ public class Hero extends Entity implements Magical {
     private Map map; 
     /** The location of the hero */
     private Point location;
+    /** Hero's money in the form of gold */
+    private int gold;
 
     /** Constructs a hero
      * @param n the hero's name
@@ -20,6 +22,7 @@ public class Hero extends Entity implements Magical {
         super(n, 25);
         map = m;
         location = map.findStart(); //puts hero at starting point of map
+        gold = 200; //initalize amount of gold
     }
 
     /** Displays the hero's current hp out of max hp 
@@ -220,5 +223,17 @@ public class Hero extends Entity implements Magical {
 
         return getName() + " zaps " + e.getName() + " with Thunderclap for "
         + damage + " damage.";
+    }
+
+    public int getGold() {
+        return gold;
+    }
+
+    public void collectGold(int g) {
+        gold += g;
+    }
+
+    public void spendGold(int g) {
+        gold -= g;
     }
 }
