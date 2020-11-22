@@ -22,4 +22,18 @@ public class Item {
     public String getName() {
         return name;
     }
+
+    /** Retrieves the value of the item
+     * @return int item's monetary value
+     */
+    public int getValue() {
+        return value;
+    }
+
+    /** Retrieves the item's type
+     * @return the item type
+     */
+    public char getType() {
+        return type;
+    }
 }
