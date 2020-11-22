@@ -82,7 +82,12 @@ public class Main {
                 System.out.println("There was nothing here.");
             }
             else if (map.getCharAtLoc(hero.getLocation()) == 's') { //starting point
-                System.out.println("You're back at the start.");
+                System.out.println("You're back at the start. Would you like to" +
+                " visit the store? (Y/N)"); //option for user to visit store
+                boolean storeChoice = CheckInput.getYesNo();
+                if (storeChoice == true) { //visits store if user picks yes
+                    store(hero);
+                }
             }
             else if (map.getCharAtLoc(hero.getLocation()) == 'f') { //finishing point
                 System.out.println("You've completed level " + level + ".");
@@ -311,6 +316,73 @@ public class Main {
         if (h.pickUpItem(item) == true) {
             System.out.println("You've picked up a " + item.getName() + ".");
             m.removeCharAtLoc(h.getLocation());
+        }
+    }
+
+    /** Simulates a store where the hero can buy items or sell items
+     * @param h the hero
+     */
+    public static void store(Hero h) {
+        System.out.println("Welcome to the store!");
+        System.out.println("What would you like to do?");
+        System.out.println("1. Buy an Item\n2. Sell an Item\n3. Quit");
+        int choice = CheckInput.getIntRange(1, 2);
+
+        if (choice == 1) {
+            System.out.println("Which item would you like to buy?");
+            System.out.println("1. Key - 200 Gold\n2. Health Potion - 100 Gold");
+            int buyChoice = CheckInput.getIntRange(1, 2);
+            if (buyChoice == 1) {
+                Item item = new Item("Key");
+                h.pickUpItem(item);
+            }
+            else if (buyChoice == 2) {
+                Item item = new Item("Health Potion");
+                h.pickUpItem(item);
+            }
+        }
+        else if (choice == 2) {
+            System.out.println("Which item number would you like to sell? " +
+            "\n" + h.itemsToString());
+            int itemNum = CheckInput.getIntRange(1, h.getNumItems());
+
+            if (h.dropItem(itemNum).getName().equals("Health Potion")) {
+                h.collectGold(25); //replace argument 
+                //with h.dropItem(itemNum).getValue() once u create that in Item
+            }
+            else if (h.dropItem(itemNum).getName().equals("Key")) {
+                h.collectGold(50);
+            }
+            else if (h.dropItem(itemNum).getName().equals("Bag o' Gold")) {
+                h.collectGold(15);
+            }
+            else if (h.dropItem(itemNum).getName().equals("Gem")) {
+                h.collectGold(10);
+            }
+            else if (h.dropItem(itemNum).getName().equals("Shield")) {
+                h.collectGold(5);
+            }
+            else if (h.dropItem(itemNum).getName().equals("Helm")) {
+                h.collectGold(7);
+            }
+            else if (h.dropItem(itemNum).getName().equals("Belt")) {
+                h.collectGold(3);
+            }
+            else if (h.dropItem(itemNum).getName().equals("Ring")) {
+                h.collectGold(8);
+            }
+            else if (h.dropItem(itemNum).getName().equals("Gloves")) {
+                h.collectGold(4);
+            }
+            else if (h.dropItem(itemNum).getName().equals("Boots")) {
+                h.collectGold(4);
+            }
+            else if (h.dropItem(itemNum).getName().equals("Ringmail")) {
+                h.collectGold(9);
+            }
+        }
+        else if (choice == 3) {
+            System.out.println("Thank you and have a nice day!");
         }
     }
 }
