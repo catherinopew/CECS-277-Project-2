@@ -330,14 +330,14 @@ public class Main {
 
         if (choice == 1) {
             System.out.println("Which item would you like to buy?");
-            System.out.println("1. Key - 200 Gold\n2. Health Potion - 100 Gold");
+            System.out.println("1. Key - 50 Gold\n2. Health Potion - 25 Gold");
             int buyChoice = CheckInput.getIntRange(1, 2);
             if (buyChoice == 1) {
-                Item item = new Item("Key");
+                Item item = new Item("Key", 50, 'k');
                 h.pickUpItem(item);
             }
             else if (buyChoice == 2) {
-                Item item = new Item("Health Potion");
+                Item item = new Item("Health Potion", 25, 'p');
                 h.pickUpItem(item);
             }
         }
@@ -345,41 +345,10 @@ public class Main {
             System.out.println("Which item number would you like to sell? " +
             "\n" + h.itemsToString());
             int itemNum = CheckInput.getIntRange(1, h.getNumItems());
-
-            if (h.dropItem(itemNum).getName().equals("Health Potion")) {
-                h.collectGold(25); //replace argument 
-                //with h.dropItem(itemNum).getValue() once u create that in Item
-            }
-            else if (h.dropItem(itemNum).getName().equals("Key")) {
-                h.collectGold(50);
-            }
-            else if (h.dropItem(itemNum).getName().equals("Bag o' Gold")) {
-                h.collectGold(15);
-            }
-            else if (h.dropItem(itemNum).getName().equals("Gem")) {
-                h.collectGold(10);
-            }
-            else if (h.dropItem(itemNum).getName().equals("Shield")) {
-                h.collectGold(5);
-            }
-            else if (h.dropItem(itemNum).getName().equals("Helm")) {
-                h.collectGold(7);
-            }
-            else if (h.dropItem(itemNum).getName().equals("Belt")) {
-                h.collectGold(3);
-            }
-            else if (h.dropItem(itemNum).getName().equals("Ring")) {
-                h.collectGold(8);
-            }
-            else if (h.dropItem(itemNum).getName().equals("Gloves")) {
-                h.collectGold(4);
-            }
-            else if (h.dropItem(itemNum).getName().equals("Boots")) {
-                h.collectGold(4);
-            }
-            else if (h.dropItem(itemNum).getName().equals("Ringmail")) {
-                h.collectGold(9);
-            }
+            Item item = h.dropItem(itemNum);
+            h.collectGold(item.getValue());
+            System.out.println("You've chosen to sell a " + item.getName() +
+            " and received " + item.getValue() + " gold.");
         }
         else if (choice == 3) {
             System.out.println("Thank you and have a nice day!");
