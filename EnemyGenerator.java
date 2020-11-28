@@ -40,7 +40,12 @@ public class EnemyGenerator {
             System.out.println("File Not Found - place in project folder");
         }
     }
-
+    public static EnemyGenerator getInstance(ItemGenerator ig){
+        if (instance == null){
+            instance = new EnemyGenerator(ig);
+        }
+        return instance; 
+    }
     /** Randomly generates an enemy from the ArrayList
      * @param level the level in which the game is on
      * @return Enemy a randomly generated enemy
