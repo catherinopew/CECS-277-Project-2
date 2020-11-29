@@ -334,11 +334,26 @@ public class Main {
             int buyChoice = CheckInput.getIntRange(1, 2);
             if (buyChoice == 1) {
                 Item item = new Item("Key", 50, 'k');
-                h.pickUpItem(item);
+                if (h.getGold() < item.getValue()) {
+                    System.out.println("You cannot afford this item!");
+                }
+                else {
+                    h.spendGold(item.getValue());
+                    h.pickUpItem(item);
+                    System.out.println("You've bought a Key and put it in your bag.");
+                }
             }
             else if (buyChoice == 2) {
                 Item item = new Item("Health Potion", 25, 'p');
-                h.pickUpItem(item);
+                if (h.getGold() < item.getValue()) {
+                    System.out.println("You cannot afford this item!");
+                }
+                else {
+                    h.spendGold(item.getValue());
+                    h.pickUpItem(item);
+                    System.out.println("You've bought a Health Potion" + 
+                    "and put it in your bag.");
+                }
             }
         }
         else if (choice == 2) {
