@@ -49,4 +49,20 @@ public class ItemGenerator {
         char itemType = itemList.get(random).getType();
         return new Item(itemName, itemValue, itemType);
     }
+
+    public Item getPotion() {
+        for (int i = 0; i < itemList.size(); i++) {
+            if (itemList.get(i).getType() == 'p') {
+                return itemList.get(i);
+            }
+        }
+    }
+
+    public Item getKey() {
+        for (int i = 0; i < itemList.size(); i++) {
+            if (itemList.get(i).getType() == 'k') {
+                return itemList.get(i);
+            }
+        }
+    }
 }
