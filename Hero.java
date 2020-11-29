@@ -249,6 +249,10 @@ public class Hero extends Entity implements Magical {
         gold -= g;
     }
 
+    /** Determines whether the hero has a armor item
+     * and returns the index of the first armor item.
+     * @return the index of first armor item or -1 if there is none
+     */
     public int hasArmorItem() {
         for (int i = 0; i < items.size(); i++) {
             if (items.get(i).getType() == 'a') {
