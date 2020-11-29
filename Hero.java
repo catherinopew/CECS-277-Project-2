@@ -248,4 +248,13 @@ public class Hero extends Entity implements Magical {
     public void spendGold(int g) {
         gold -= g;
     }
+
+    public int hasArmorItem() {
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).getType() == 'a') {
+                return i;
+            }
+        }
+        return -1;
+    }
 }
