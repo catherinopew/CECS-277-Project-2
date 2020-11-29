@@ -56,6 +56,7 @@ public class ItemGenerator {
                 return itemList.get(i);
             }
         }
+        return null;
     }
 
     public Item getKey() {
@@ -64,5 +65,6 @@ public class ItemGenerator {
                 return itemList.get(i);
             }
         }
+        return null;
     }
 }
