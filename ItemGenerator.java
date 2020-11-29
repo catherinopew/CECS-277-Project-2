@@ -18,7 +18,9 @@ public class ItemGenerator {
             Scanner read = new Scanner(new File("ItemList.txt"));
             while(read.hasNextLine()) {
                 String line = read.nextLine();
-                itemList.add(new Item(line));
+                String [] token = line.split(",");
+                itemList.add(new Item(token[0], Integer.parseInt(token[1]),
+                token[2].charAt(0)));
             }
             read.close();
         } 
@@ -26,6 +28,7 @@ public class ItemGenerator {
             System.out.println("File Not Found - place in project folder");
         }
     }
+
      /** Checks for the instance of the ItemGenerator and making sure that 
       * the object has not already been created
       */
@@ -41,6 +44,9 @@ public class ItemGenerator {
      */
     public Item generateItem() {
         int random = (int)(Math.random() * itemList.size());
-        return new Item(itemList.get(random).getName());
+        String itemName = itemList.get(random).getName();
+        int itemValue = itemList.get(random).getValue();
+        char itemType = itemList.get(random).getType();
+        return new Item(itemName, itemValue, itemType);
     }
 }
