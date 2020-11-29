@@ -50,6 +50,9 @@ public class ItemGenerator {
         return new Item(itemName, itemValue, itemType);
     }
 
+    /** Retrieves a health potion from the hero's inventory
+     * @return the health potion or null if there is none
+     */
     public Item getPotion() {
         for (int i = 0; i < itemList.size(); i++) {
             if (itemList.get(i).getType() == 'p') {
@@ -59,6 +62,9 @@ public class ItemGenerator {
         return null;
     }
 
+    /** Retrieves a key from the hero's inventory
+     * @return the key or null if there is none
+     */
     public Item getKey() {
         for (int i = 0; i < itemList.size(); i++) {
             if (itemList.get(i).getType() == 'k') {
