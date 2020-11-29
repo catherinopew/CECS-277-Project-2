@@ -247,6 +247,9 @@ public class Hero extends Entity implements Magical {
      */
     public void spendGold(int g) {
         gold -= g;
+        if (gold < 0) {
+            gold = 0;
+        }
     }
 
     /** Determines whether the hero has a armor item
