@@ -262,6 +262,9 @@ public class Hero extends Entity implements Magical {
         return -1;
     }
 
+    /** Checks to see if the hero has a key in possession 
+     * @return boolean true if the hero has a key, false otherwise
+     */
     public boolean hasKey() {
         boolean hasKey = false;
         for (int i = 0; i < items.size(); i++) {
@@ -272,6 +275,7 @@ public class Hero extends Entity implements Magical {
         return hasKey;
     }
 
+    /** Uses the key in possession and consumes it. */
     public void useKey() {
         for (int i = 0; i < items.size(); i++) {
             if (items.get(i).getType() == 'k') {
