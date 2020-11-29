@@ -261,4 +261,22 @@ public class Hero extends Entity implements Magical {
         }
         return -1;
     }
+
+    public boolean hasKey() {
+        boolean hasKey = false;
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).getType() == 'k') {
+                hasKey = true;
+            }
+        }
+        return hasKey;
+    }
+
+    public void useKey() {
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).getType() == 'k') {
+                dropItem(i);
+            }
+        }
+    }
 }
