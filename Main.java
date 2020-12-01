@@ -144,7 +144,7 @@ public class Main {
                 System.out.println(h.attack(e));
                 if (e.getHP() != 0) { //enemy attacks back as long as it is still alive
                     if (h.hasArmorItem() != -1) {
-                        System.out.println(e.getName() + "attempts to attack you, " +
+                        System.out.println(e.getName() + " attempts to attack you, " +
                         "but you blocked all of the damage with your armor.");
                         h.dropItem(h.hasArmorItem());
                     }
@@ -160,7 +160,7 @@ public class Main {
                     System.out.println(h.magicMissile(e));
                     if (e.getHP() != 0) {
                         if (h.hasArmorItem() != -1) {
-                            System.out.println(e.getName() + "attempts to attack you, " +
+                            System.out.println(e.getName() + " attempts to attack you, " +
                             "but you blocked all of the damage with your armor.");
                             h.dropItem(h.hasArmorItem());
                         }
@@ -173,7 +173,7 @@ public class Main {
                     System.out.println(h.fireball(e));
                     if (e.getHP() != 0) {
                         if (h.hasArmorItem() != -1) {
-                            System.out.println(e.getName() + "attempts to attack you, " +
+                            System.out.println(e.getName() + " attempts to attack you, " +
                             "but you blocked all of the damage with your armor.");
                             h.dropItem(h.hasArmorItem());
                         }
@@ -186,7 +186,7 @@ public class Main {
                     System.out.println(h.thunderclap(e));
                     if (e.getHP() != 0) { 
                         if (h.hasArmorItem() != -1) {
-                            System.out.println(e.getName() + "attempts to attack you, " +
+                            System.out.println(e.getName() + " attempts to attack you, " +
                             "but you blocked all of the damage with your armor.");
                             h.dropItem(h.hasArmorItem());
                         }
