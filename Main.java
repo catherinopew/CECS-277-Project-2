@@ -343,7 +343,6 @@ public class Main {
                     else if (h.getNumItems() == 5) {
                         System.out.println("Your inventory is full!" +
                         "You cannot buy this item. Please sell something.");
-                        choice = 2;
                     }
                     else {
                         h.spendGold(item.getValue());
@@ -359,7 +358,6 @@ public class Main {
                     else if (h.getNumItems() == 5) {
                         System.out.println("Your inventory is full!" +
                         "You cannot buy this item. Please sell something.");
-                        choice = 2;
                     }
                     else {
                         h.spendGold(item.getValue());
