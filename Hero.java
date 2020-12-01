@@ -22,7 +22,7 @@ public class Hero extends Entity implements Magical {
         super(n, 25);
         map = m;
         location = map.findStart(); //puts hero at starting point of map
-        gold = 200; //initalize amount of gold
+        gold = 150; //initalize amount of gold
     }
 
     /** Displays the hero's current hp out of max hp 
