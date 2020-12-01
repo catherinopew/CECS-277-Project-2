@@ -143,7 +143,14 @@ public class Main {
             if (choice == 1) {
                 System.out.println(h.attack(e));
                 if (e.getHP() != 0) { //enemy attacks back as long as it is still alive
-                    System.out.println(e.attack(h));
+                    if (h.hasArmorItem() != -1) {
+                        System.out.println(e.getName() + "attempts to attack you, " +
+                        "but you blocked all of the damage with your armor.");
+                        h.dropItem(h.hasArmorItem());
+                    }
+                    else {
+                        System.out.println(e.attack(h));
+                    }
                 }
             }
             else {
@@ -152,19 +159,40 @@ public class Main {
                 if (choice == 1) { //magic missle option
                     System.out.println(h.magicMissile(e));
                     if (e.getHP() != 0) {
-                        System.out.println(e.attack(h));
+                        if (h.hasArmorItem() != -1) {
+                            System.out.println(e.getName() + "attempts to attack you, " +
+                            "but you blocked all of the damage with your armor.");
+                            h.dropItem(h.hasArmorItem());
+                        }
+                        else {
+                            System.out.println(e.attack(h));
+                        }
                     }
                 }
                 else if (choice == 2) { //fireball option
                     System.out.println(h.fireball(e));
                     if (e.getHP() != 0) {
-                        System.out.println(e.attack(h));
+                        if (h.hasArmorItem() != -1) {
+                            System.out.println(e.getName() + "attempts to attack you, " +
+                            "but you blocked all of the damage with your armor.");
+                            h.dropItem(h.hasArmorItem());
+                        }
+                        else {
+                            System.out.println(e.attack(h));
+                        }
                     }
                 }
                 else { //thunderclap option
                     System.out.println(h.thunderclap(e));
                     if (e.getHP() != 0) { 
-                        System.out.println(e.attack(h));
+                        if (h.hasArmorItem() != -1) {
+                            System.out.println(e.getName() + "attempts to attack you, " +
+                            "but you blocked all of the damage with your armor.");
+                            h.dropItem(h.hasArmorItem());
+                        }
+                        else {
+                            System.out.println(e.attack(h));
+                        }
                     }
                 }
             }
