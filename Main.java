@@ -1,8 +1,8 @@
 import java.util.Random;
 
 /** A program of a dungeon maze game where you are the hero
- * @author Catherine Bui, Jafet Oidor Ortega, Corrine Rivera
- * @version 10/18/2020
+ * @author Catherine Bui and Jacob Sunia
+ * @version 12/01/2020
  */
 public class Main {
     /** The main method where you can name your hero and progress through the game */
