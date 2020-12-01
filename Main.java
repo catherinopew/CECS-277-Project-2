@@ -324,7 +324,7 @@ public class Main {
      */
     public static void store(Hero h) {
         System.out.println("Welcome to the store!");
-        
+
         int choice = 0;
         while (choice != 3) {
             System.out.println("What would you like to do?");
@@ -341,8 +341,8 @@ public class Main {
                         System.out.println("You cannot afford this item!");
                     }
                     else if (h.getNumItems() == 5) {
-                        System.out.println("You cannot buy this item." +
-                        "Your inventory is full!");
+                        System.out.println("Your inventory is full!" +
+                        "You cannot buy this item. Please sell something.");
                         choice = 2;
                     }
                     else {
@@ -357,8 +357,8 @@ public class Main {
                         System.out.println("You cannot afford this item!");
                     }
                     else if (h.getNumItems() == 5) {
-                        System.out.println("You cannot buy this item." +
-                        "Your inventory is full!");
+                        System.out.println("Your inventory is full!" +
+                        "You cannot buy this item. Please sell something.");
                         choice = 2;
                     }
                     else {
