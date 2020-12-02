@@ -56,20 +56,19 @@ public class EnemyGenerator{
         Random rand = new Random();
         int occurence = rand.nextInt(10)+1; 
         System.out.println(occurence);
+        int counter = 2;
+        
+        Enemy physical = new Enemy(enemyList.get(ran).getName(), enemyList.get(ran).getMaxHP()+(counter*level), enemyList.get(ran).getItem());
         
         if (occurence < 3) {
-            Enemy warrior = new Warrior(enemyList.get(ran));            
+            Enemy warrior = new Warrior(physical);            
             return warrior;
         } else if (occurence >= 3 && occurence < 5){
-            Enemy warlock = new Warlock(enemyList.get(ran));
+            Enemy warlock = new Warlock(physical);
             return warlock;
-        } else {
-            Enemy physical = new Enemy(enemyList.get(ran).getName(), enemyList.get(ran).getMaxHP(), enemyList.get(ran).getItem());
-            if (level > 1){
-                physical = new Enemy(enemyList.get(ran).getName(), enemyList.get(ran).getMaxHP()+4, enemyList.get(ran).getItem());
-             
-            }
+        } else {            
             return physical;
-        } 
+        }
+        
     }
 }
