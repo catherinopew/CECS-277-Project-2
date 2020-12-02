@@ -1,8 +1,8 @@
 import java.util.Random;
 
 /** A program of a dungeon maze game where you are the hero
- * @author Catherine Bui, Jafet Oidor Ortega, Corrine Rivera
- * @version 10/18/2020
+ * @author Catherine Bui and Jacob Sunia
+ * @version 12/01/2020
  */
 public class Main {
     /** The main method where you can name your hero and progress through the game */
@@ -143,7 +143,14 @@ public class Main {
             if (choice == 1) {
                 System.out.println(h.attack(e));
                 if (e.getHP() != 0) { //enemy attacks back as long as it is still alive
-                    System.out.println(e.attack(h));
+                    if (h.hasArmorItem() != -1) {
+                        System.out.println(e.getName() + " attempts to attack you, " +
+                        "but you blocked all of the damage with your armor.");
+                        h.dropItem(h.hasArmorItem());
+                    }
+                    else {
+                        System.out.println(e.attack(h));
+                    }
                 }
             }
             else {
@@ -152,19 +159,40 @@ public class Main {
                 if (choice == 1) { //magic missle option
                     System.out.println(h.magicMissile(e));
                     if (e.getHP() != 0) {
-                        System.out.println(e.attack(h));
+                        if (h.hasArmorItem() != -1) {
+                            System.out.println(e.getName() + " attempts to attack you, " +
+                            "but you blocked all of the damage with your armor.");
+                            h.dropItem(h.hasArmorItem());
+                        }
+                        else {
+                            System.out.println(e.attack(h));
+                        }
                     }
                 }
                 else if (choice == 2) { //fireball option
                     System.out.println(h.fireball(e));
                     if (e.getHP() != 0) {
-                        System.out.println(e.attack(h));
+                        if (h.hasArmorItem() != -1) {
+                            System.out.println(e.getName() + " attempts to attack you, " +
+                            "but you blocked all of the damage with your armor.");
+                            h.dropItem(h.hasArmorItem());
+                        }
+                        else {
+                            System.out.println(e.attack(h));
+                        }
                     }
                 }
                 else { //thunderclap option
                     System.out.println(h.thunderclap(e));
                     if (e.getHP() != 0) { 
-                        System.out.println(e.attack(h));
+                        if (h.hasArmorItem() != -1) {
+                            System.out.println(e.getName() + " attempts to attack you, " +
+                            "but you blocked all of the damage with your armor.");
+                            h.dropItem(h.hasArmorItem());
+                        }
+                        else {
+                            System.out.println(e.attack(h));
+                        }
                     }
                 }
             }
@@ -324,49 +352,61 @@ public class Main {
      */
     public static void store(Hero h) {
         System.out.println("Welcome to the store!");
-        System.out.println("What would you like to do?");
-        System.out.println("1. Buy an Item\n2. Sell an Item\n3. Quit");
-        int choice = CheckInput.getIntRange(1, 3);
 
-        if (choice == 1) {
-            System.out.println("Which item would you like to buy?");
-            System.out.println("1. Key - 50 Gold\n2. Health Potion - 25 Gold");
-            int buyChoice = CheckInput.getIntRange(1, 2);
-            if (buyChoice == 1) {
-                Item item = new Item("Key", 50, 'k');
-                if (h.getGold() < item.getValue()) {
-                    System.out.println("You cannot afford this item!");
+        int choice = 0;
+        while (choice != 3) {
+            System.out.println("What would you like to do?");
+            System.out.println("1. Buy an Item\n2. Sell an Item\n3. Quit");
+            choice = CheckInput.getIntRange(1, 3);
+    
+            if (choice == 1) {
+                System.out.println("Which item would you like to buy?");
+                System.out.println("1. Key - 50 Gold\n2. Health Potion - 25 Gold");
+                int buyChoice = CheckInput.getIntRange(1, 2);
+                if (buyChoice == 1) {
+                    Item item = new Item("Key", 50, 'k');
+                    if (h.getGold() < item.getValue()) {
+                        System.out.println("You cannot afford this item!");
+                    }
+                    else if (h.getNumItems() == 5) {
+                        System.out.println("Your inventory is full!" +
+                        "You cannot buy this item. Please sell something.");
+                    }
+                    else {
+                        h.spendGold(item.getValue());
+                        h.pickUpItem(item);
+                        System.out.println("You've bought a Key and put it in your bag.");
+                    }
                 }
-                else {
-                    h.spendGold(item.getValue());
-                    h.pickUpItem(item);
-                    System.out.println("You've bought a Key and put it in your bag.");
+                else if (buyChoice == 2) {
+                    Item item = new Item("Health Potion", 25, 'p');
+                    if (h.getGold() < item.getValue()) {
+                        System.out.println("You cannot afford this item!");
+                    }
+                    else if (h.getNumItems() == 5) {
+                        System.out.println("Your inventory is full!" +
+                        "You cannot buy this item. Please sell something.");
+                    }
+                    else {
+                        h.spendGold(item.getValue());
+                        h.pickUpItem(item);
+                        System.out.println("You've bought a Health Potion" + 
+                        "and put it in your bag.");
+                    }
                 }
             }
-            else if (buyChoice == 2) {
-                Item item = new Item("Health Potion", 25, 'p');
-                if (h.getGold() < item.getValue()) {
-                    System.out.println("You cannot afford this item!");
-                }
-                else {
-                    h.spendGold(item.getValue());
-                    h.pickUpItem(item);
-                    System.out.println("You've bought a Health Potion" + 
-                    "and put it in your bag.");
-                }
+            else if (choice == 2) {
+                System.out.println("Which item number would you like to sell? " +
+                "\n" + h.itemsToString());
+                int itemNum = CheckInput.getIntRange(1, h.getNumItems());
+                Item item = h.dropItem(itemNum);
+                h.collectGold(item.getValue());
+                System.out.println("You've chosen to sell a " + item.getName() +
+                " and received " + item.getValue() + " gold.");
             }
-        }
-        else if (choice == 2) {
-            System.out.println("Which item number would you like to sell? " +
-            "\n" + h.itemsToString());
-            int itemNum = CheckInput.getIntRange(1, h.getNumItems());
-            Item item = h.dropItem(itemNum);
-            h.collectGold(item.getValue());
-            System.out.println("You've chosen to sell a " + item.getName() +
-            " and received " + item.getValue() + " gold.");
-        }
-        else if (choice == 3) {
-            System.out.println("Thank you and have a nice day!");
+            else if (choice == 3) {
+                System.out.println("Thank you and have a nice day!");
+            }
         }
     }
 }
