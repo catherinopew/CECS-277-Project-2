@@ -19,9 +19,9 @@ public class EnemyGenerator{
     public EnemyGenerator(ItemGenerator ig) {
         this.ig = ig;
         Random ran = new Random();
-        int num = ran.nextInt(4)+1;
-        int i = 0;
-        while(i != 10){
+        int num = 0;
+
+        for (int i = 0; i < 10; i++) {
             num = ran.nextInt(4)+1;
             if (num == 1){
                 enemyList.add(new Troll(ig.generateItem()));
@@ -32,9 +32,9 @@ public class EnemyGenerator{
             } else {
                 enemyList.add(new Goblin(ig.generateItem()));
             }
-            i++;
         }
     }
+
     /** getInstance ensures that there is only one instance of enemyGenerator
     *   @param ig is used to add to the instance of the enemyGenerator
     *   @return the instance of the enemy generator 
@@ -51,7 +51,34 @@ public class EnemyGenerator{
      * @return Enemy a randomly generated enemy
      */
     public Enemy generateEnemy(int level) {
+        Random rand = new Random();
+        int occurrence = 0;
         int ran = (int)(Math.random() * enemyList.size());
+        int counter = 2;
+
+        Enemy physical = new Enemy(enemyList.get(ran).getName(), 
+        enemyList.get(ran).getMaxHP()+(counter * level), 
+        enemyList.get(ran).getItem()); //this gets reset each time
+
+        if (level > 1) {
+            occurrence = rand.nextInt(2) + 1;
+            int stack = 0;
+
+            if (occurrence == 1) {
+                while (stack != level - 1) {
+                    physical = new Warrior(physical);
+                    stack++;
+                }
+            }
+            else {
+                while (stack != level - 1) {
+                    physical = new Warlock(physical);
+                    stack++;
+                }
+            }
+        }
+        return physical;
+        /*int ran = (int)(Math.random() * enemyList.size());
         Random rand = new Random();
         int occurence = rand.nextInt(10)+1; 
         System.out.println(occurence);
@@ -77,6 +104,6 @@ public class EnemyGenerator{
             return warlock;
         } else {
             return physical;
-        }      
+        }*/      
     }
 }
