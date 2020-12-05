@@ -392,7 +392,7 @@ public class Main {
                     else {
                         h.spendGold(item.getValue());
                         h.pickUpItem(item);
-                        System.out.println("You've bought a Health Potion" + 
+                        System.out.println("You've bought a Health Potion " + 
                         "and put it in your bag.");
                     }
                 }
