@@ -60,15 +60,29 @@ public class EnemyGenerator{
         
         Enemy physical = new Enemy(enemyList.get(ran).getName(), enemyList.get(ran).getMaxHP()+(counter*level), enemyList.get(ran).getItem());
         
-        if (occurence < 3) {
+        if (level > 1 || occurence <= 1) {
             Enemy warrior = new Warrior(physical);            
+            if (level > 2 || occurence >= 8){
+                warrior = new Warrior(warrior);
+                return warrior;
+            } else if (level > 2 || occurence >= 6){
+                warrior = new Warlock(warrior);
+                return warrior;
+            }
             return warrior;
-        } else if (occurence >= 3 && occurence < 5){
+        } else if (level > 1 || occurence <= 2 ){
             Enemy warlock = new Warlock(physical);
+            if (level > 2 || occurence >= 6){
+                warlock = new Warlock(warlock);
+                return warlock;
+            } else if (level > 2 || occurence >= 8){
+                warlock = new Warrior(warlock);
+                return warlock;
+            }
             return warlock;
-        } else {            
+        } else {
             return physical;
-        }
-        
+        }      
     }
 }
+
