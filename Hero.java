@@ -84,8 +84,7 @@ public class Hero extends Entity implements Magical {
      * @return Item the item dropped
      */
     public Item dropItem(int index) {
-        items.remove(index);
-        return items.get(index);
+        return items.remove(index);
     }
 
     /** Determines whether the hero has a potion in their inventory
