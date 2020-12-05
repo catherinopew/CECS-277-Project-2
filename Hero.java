@@ -30,7 +30,8 @@ public class Hero extends Entity implements Magical {
      */
     @Override
     public String toString() {
-        return super.toString() + "\n" + itemsToString();
+        return super.toString() + "\nGold: " + getGold() + "\n"
+        + itemsToString();
     }
 
     /** Displays the hero's current inventory
