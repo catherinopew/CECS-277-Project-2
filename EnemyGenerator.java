@@ -64,20 +64,16 @@ public class EnemyGenerator{
             Enemy warrior = new Warrior(physical);            
             if (level > 2 || occurence >= 8){
                 warrior = new Warrior(warrior);
-                return warrior;
             } else if (level > 2 || occurence >= 6){
                 warrior = new Warlock(warrior);
-                return warrior;
             }
             return warrior;
         } else if (level > 1 || occurence <= 2 ){
             Enemy warlock = new Warlock(physical);
             if (level > 2 || occurence >= 6){
                 warlock = new Warlock(warlock);
-                return warlock;
             } else if (level > 2 || occurence >= 8){
                 warlock = new Warrior(warlock);
-                return warlock;
             }
             return warlock;
         } else {
@@ -85,4 +81,3 @@ public class EnemyGenerator{
         }      
     }
 }
-
