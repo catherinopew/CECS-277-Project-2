@@ -7,6 +7,7 @@ public abstract class Enemy_Decorator extends Enemy{
         enemy = e; 
         item = i;
     }
+    
     @Override
     public String attack(Entity ent){
         return enemy.attack(ent);

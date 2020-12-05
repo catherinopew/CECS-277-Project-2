@@ -2,8 +2,9 @@ import java.util.Random;
 
 public class Warlock extends Enemy_Decorator implements Magical {
     public Warlock ( Enemy e ){
-        super(e, e.getName() + " Warlock", e.getHP() + 1, e.getItem());
+        super(e, e.getName() + " Warlock", e.getMaxHP() + 1, e.getItem());
     }
+
     @Override
     public String attack( Entity e ){
         Random rand = new Random();

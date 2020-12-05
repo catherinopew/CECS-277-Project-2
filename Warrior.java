@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class Warrior extends Enemy_Decorator {
     public Warrior ( Enemy e ){
-        super(e, e.getName() + " Warrior", e.getHP() + 2, e.getItem());
+        super(e, e.getName() + " Warrior", e.getMaxHP() + 2, e.getItem());
     }
     @Override
     public String attack( Entity e ){
