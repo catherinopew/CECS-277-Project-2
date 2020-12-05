@@ -364,7 +364,8 @@ public class Main {
                 System.out.println("1. Key - 50 Gold\n2. Health Potion - 25 Gold");
                 int buyChoice = CheckInput.getIntRange(1, 2);
                 if (buyChoice == 1) {
-                    Item item = new Item("Key", 50, 'k');
+                    ItemGenerator ig = new ItemGenerator();
+                    Item item = ig.getKey();
                     if (h.getGold() < item.getValue()) {
                         System.out.println("You cannot afford this item!");
                     }
@@ -379,7 +380,8 @@ public class Main {
                     }
                 }
                 else if (buyChoice == 2) {
-                    Item item = new Item("Health Potion", 25, 'p');
+                    ItemGenerator ig = new ItemGenerator();
+                    Item item = ig.getPotion();
                     if (h.getGold() < item.getValue()) {
                         System.out.println("You cannot afford this item!");
                     }
