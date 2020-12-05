@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Warlock extends Enemy_Decorator {
+public class Warlock extends Enemy_Decorator implements Magical {
     public Warlock ( Enemy e ){
         super(e, e.getName() + " Warlock", e.getHP() + 1, e.getItem());
     }
