@@ -90,10 +90,17 @@ public class Main {
                 }
             }
             else if (map.getCharAtLoc(hero.getLocation()) == 'f') { //finishing point
-                System.out.println("You've completed level " + level + ".");
-                level++; //increment level, load a new map, and heal hero to max hp
-                map.loadMap(level);
-                hero.heal(hero.getMaxHP());
+                if (hero.hasKey()) {
+                    System.out.println("You've completed level " + level + ".");
+                    level++; //increment level, load a new map, and heal hero to max hp
+                    map.loadMap(level);
+                    hero.heal(hero.getMaxHP());
+                    hero.useKey();
+                }
+                else {
+                    System.out.println("You do not have the key! Find it to " +
+                    "unlock the next level.");
+                }
             }
         }
         if (hero.getHP() == 0) { //display game over if hero is dead
@@ -398,13 +405,18 @@ public class Main {
                 }
             }
             else if (choice == 2) {
-                System.out.println("Which item number would you like to sell? " +
-                "\n" + h.itemsToString());
-                int itemNum = CheckInput.getIntRange(1, h.getNumItems());
-                Item item = h.dropItem(itemNum);
-                h.collectGold(item.getValue());
-                System.out.println("You've chosen to sell a " + item.getName() +
-                " and received " + item.getValue() + " gold.");
+                if (h.getNumItems() > 0) {
+                    System.out.println("Which item number would you like to sell? " +
+                    "\n" + h.itemsToString());
+                    int itemNum = CheckInput.getIntRange(1, h.getNumItems());
+                    Item item = h.dropItem(itemNum - 1);
+                    h.collectGold(item.getValue());
+                    System.out.println("You've chosen to sell a " + item.getName() +
+                    " and received " + item.getValue() + " gold.");
+                }
+                else {
+                    System.out.println("There is nothing to sell!");
+                }
             }
             else if (choice == 3) {
                 System.out.println("Thank you and have a nice day!");
