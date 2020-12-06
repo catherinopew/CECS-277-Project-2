@@ -11,7 +11,7 @@ public class Hero extends Entity implements Magical {
     private Map map; 
     /** The location of the hero */
     private Point location;
-    /** Hero's money in the form of gold */
+    /** The hero's money in the form of gold */
     private int gold;
 
     /** Constructs a hero
@@ -78,11 +78,9 @@ public class Hero extends Entity implements Magical {
         }
     }
 
-    /** Drops an item if the inventory is full and
-     * hero wants to pick up a new item
-     * It also returns which item was dropped.
+    /** Drops an item from the inventory
      * @param index the index of the item to be dropped
-     * @return Item the item dropped
+     * @return Item the item that was dropped
      */
     public Item dropItem(int index) {
         return items.remove(index);
@@ -179,9 +177,8 @@ public class Hero extends Entity implements Magical {
     @Override
     public String attack(Entity e) {
         Random rand = new Random();
-        int damage = rand.nextInt(15) + 1; //random amount of damage 1-7
+        int damage = rand.nextInt(15) + 1; //random amount of damage 1-15
         e.takeDamage(damage);
-
         return getName() + " attacks " + e.getName() 
         + " for " + damage + " damage.";
     }
@@ -195,7 +192,6 @@ public class Hero extends Entity implements Magical {
         Random rand = new Random();
         int damage = rand.nextInt(15) + 1;
         e.takeDamage(damage);
-
         return getName() + " hits " + e.getName() + " with a Magic Missle for "
         + damage + " damage.";
     }
@@ -209,7 +205,6 @@ public class Hero extends Entity implements Magical {
         Random rand = new Random();
         int damage = rand.nextInt(15) + 1;
         e.takeDamage(damage);
-
         return getName() + " hits " + e.getName() + " with a Fireball for "
         + damage + " damage.";
     }
@@ -223,7 +218,6 @@ public class Hero extends Entity implements Magical {
         Random rand = new Random();
         int damage = rand.nextInt(15) + 1;
         e.takeDamage(damage);
-
         return getName() + " zaps " + e.getName() + " with Thunderclap for "
         + damage + " damage.";
     }
@@ -247,9 +241,6 @@ public class Hero extends Entity implements Magical {
      */
     public void spendGold(int g) {
         gold -= g;
-        if (gold < 0) {
-            gold = 0;
-        }
     }
 
     /** Determines whether the hero has a armor item
