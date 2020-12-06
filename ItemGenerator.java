@@ -29,9 +29,9 @@ public class ItemGenerator {
         }
     }
 
-     /** Checks for the instance of the ItemGenerator and making sure that 
-      * the object has not already been created
-      */
+    /** Checks for the instance of the ItemGenerator and making sure that 
+     * the object has not already been created
+     */
     public static ItemGenerator getInstance(){
         if (instance == null){
             instance = new ItemGenerator();
@@ -50,7 +50,7 @@ public class ItemGenerator {
         return new Item(itemName, itemValue, itemType);
     }
 
-    /** Retrieves a health potion from the hero's inventory
+    /** Retrieves a health potion from itemList
      * @return the health potion or null if there is none
      */
     public Item getPotion() {
@@ -62,7 +62,7 @@ public class ItemGenerator {
         return null;
     }
 
-    /** Retrieves a key from the hero's inventory
+    /** Retrieves a key from itemList
      * @return the key or null if there is none
      */
     public Item getKey() {
