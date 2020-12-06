@@ -1,9 +1,16 @@
 import java.util.Random;
-
+/** Warlock is a decorator to each enemy type that uses magical attacks*/
 public class Warlock extends Enemy_Decorator implements Magical{
+    /** Warlock is the constructor that takes in the enemy to get the object of the superclass
+     *  @param e is the enemy type that will be passed into Warlock
+    */
     public Warlock ( Enemy e ){
-        super(e, "Warlock " + e.getName(), e.getMaxHP() + 1, e.getItem());
+        super(e, " Warlock " + e.getName(), e.getMaxHP() + 1, e.getItem());
     }
+    /** Attacks the hero for a random amount of damage
+     * @param e the hero who is being attacked
+     * @return String the attack message
+     */
     @Override
     public String attack( Entity e ){
         Random rand = new Random();
