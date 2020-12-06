@@ -29,7 +29,7 @@ public class Enemy extends Entity {
     @Override
     public String attack(Entity e) {
         Random rand = new Random();
-        int damage = rand.nextInt(7) + 1;
+        int damage = rand.nextInt(5) + 1;
         e.takeDamage(damage);
         return getName() + " attacks " + e.getName() 
         + " for " + damage + " damage.";

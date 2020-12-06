@@ -2,7 +2,7 @@ import java.util.Random;
 
 /** A program of a dungeon maze game where you are the hero
  * @author Catherine Bui and Jacob Sunia
- * @version 12/01/2020
+ * @version 12/05/2020
  */
 public class Main {
     /** The main method where you can name your hero and progress through the game */
@@ -98,8 +98,8 @@ public class Main {
                     hero.useKey();
                 }
                 else {
-                    System.out.println("You do not have the key! Find it to " +
-                    "unlock the next level.");
+                    System.out.println("You encounter a door, but you don't have the key! " +
+                    "Find it to unlock the next level.");
                 }
             }
         }
@@ -141,9 +141,7 @@ public class Main {
             choice = CheckInput.getIntRange(1, 2);
         }
 
-        if (e instanceof MagicalEnemy) { //downcast enemy to magical if it is magical
-            e = (MagicalEnemy) e;
-        }
+
         if (choice == 1) { //option to fight
             System.out.println("1. Physical Attack\n2. Magic Attack"); //display attack menu
             choice = CheckInput.getIntRange(1, 2);
@@ -370,8 +368,8 @@ public class Main {
                 System.out.println("Which item would you like to buy?");
                 System.out.println("1. Key - 50 Gold\n2. Health Potion - 25 Gold");
                 int buyChoice = CheckInput.getIntRange(1, 2);
+                ItemGenerator ig = new ItemGenerator();
                 if (buyChoice == 1) {
-                    ItemGenerator ig = new ItemGenerator();
                     Item item = ig.getKey();
                     if (h.getGold() < item.getValue()) {
                         System.out.println("You cannot afford this item!");
@@ -387,7 +385,6 @@ public class Main {
                     }
                 }
                 else if (buyChoice == 2) {
-                    ItemGenerator ig = new ItemGenerator();
                     Item item = ig.getPotion();
                     if (h.getGold() < item.getValue()) {
                         System.out.println("You cannot afford this item!");
