@@ -16,13 +16,15 @@ public class Map {
     map = new char [5][5];
     revealed = new boolean [5][5];
   }
-  /** Checks for the instance of the map and making sure that the object has not already been created*/
-  public static Map getInstance(){
-        if (instance == null){
+
+  /** Checks for the instance of the map and making sure that the object has not already been created */
+  public static Map getInstance() {
+        if (instance == null) {
             instance = new Map();
         }
         return instance; 
   }
+  
   /** Reads in and loads the appropriate map file given the map number
    * and fills the 2D array with values
    * @param mapNum the map number
