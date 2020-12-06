@@ -377,7 +377,7 @@ public class Main {
                         System.out.println("You cannot afford this item!");
                     }
                     else if (h.getNumItems() == 5) {
-                        System.out.println("Your inventory is full!" +
+                        System.out.println("Your inventory is full! " +
                         "You cannot buy this item. Please sell something.");
                     }
                     else {
