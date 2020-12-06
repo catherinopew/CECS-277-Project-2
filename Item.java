@@ -23,8 +23,8 @@ public class Item {
         return name;
     }
 
-    /** Retrieves the value of the item
-     * @return int item's monetary value
+    /** Retrieves the monetary value of the item
+     * @return int item's value in gold
      */
     public int getValue() {
         return value;
