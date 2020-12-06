@@ -29,9 +29,9 @@ public class ItemGenerator {
         }
     }
 
-    /** Checks for the instance of the ItemGenerator and making sure that 
-     * the object has not already been created
-     */
+     /** Checks for the instance of the ItemGenerator and making sure that 
+      * the object has not already been created
+      */
     public static ItemGenerator getInstance(){
         if (instance == null){
             instance = new ItemGenerator();
@@ -44,33 +44,33 @@ public class ItemGenerator {
      */
     public Item generateItem() {
         int random = (int)(Math.random() * itemList.size());
-        String itemName = itemList.get(random).getName();
-        int itemValue = itemList.get(random).getValue();
-        char itemType = itemList.get(random).getType();
-        return new Item(itemName, itemValue, itemType);
+        Prototype newItem = itemList.get(random).clone();
+        return (Item) newItem;
     }
 
-    /** Retrieves a health potion from itemList
+    /** Retrieves a health potion from the hero's inventory
      * @return the health potion or null if there is none
      */
     public Item getPotion() {
+        Prototype potion = null;
         for (int i = 0; i < itemList.size(); i++) {
             if (itemList.get(i).getType() == 'p') {
-                return itemList.get(i);
+                potion = itemList.get(i).clone();
             }
         }
-        return null;
+        return (Item) potion;
     }
 
-    /** Retrieves a key from itemList
+    /** Retrieves a key from the hero's inventory
      * @return the key or null if there is none
      */
     public Item getKey() {
+        Prototype key = null;
         for (int i = 0; i < itemList.size(); i++) {
             if (itemList.get(i).getType() == 'k') {
-                return itemList.get(i);
+                key = itemList.get(i).clone();
             }
         }
-        return null;
+        return (Item) key;
     }
 }
