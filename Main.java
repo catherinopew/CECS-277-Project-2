@@ -141,9 +141,7 @@ public class Main {
             choice = CheckInput.getIntRange(1, 2);
         }
 
-        if (e instanceof MagicalEnemy) { //downcast enemy to magical if it is magical
-            e = (MagicalEnemy) e;
-        }
+
         if (choice == 1) { //option to fight
             System.out.println("1. Physical Attack\n2. Magic Attack"); //display attack menu
             choice = CheckInput.getIntRange(1, 2);
