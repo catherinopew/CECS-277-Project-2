@@ -1,5 +1,5 @@
-/**interface that allows a item to be coppied*/
-public interface Prototype{   
-    /**used for clone method that will clone a Prototype*/
+/** Interface that allows a item to be copied */
+public interface Prototype {   
+    /** Used for clone method that will clone a Prototype */
     public Prototype clone();
 }

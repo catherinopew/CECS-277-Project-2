@@ -1,4 +1,5 @@
 import java.util.Random;
+
 /** Warlock is a decorator to each enemy type that uses magical attacks */
 public class Warlock extends Enemy_Decorator implements Magical{
     /** Warlock is the constructor that takes in the enemy to get the object of the superclass
@@ -17,13 +18,13 @@ public class Warlock extends Enemy_Decorator implements Magical{
         Random rand = new Random();
         int random = rand.nextInt(3) + 1;
         if (random == 1) {
-            return magicMissile(e);
+            return magicMissile(e) + "\n" + super.attack(e);
         }
         else if (random == 2) {
-            return fireball(e);
+            return fireball(e) + "\n" + super.attack(e);
         }
         else {
-            return thunderclap(e);
+            return thunderclap(e) + "\n" + super.attack(e);
         }
     }
     

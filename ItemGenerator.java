@@ -13,7 +13,7 @@ public class ItemGenerator {
     /** Reads from the ItemList.txt file 
      * and adds each item to the ArrayList, itemList
      */
-    public ItemGenerator() {
+    private ItemGenerator() {
         try {
             Scanner read = new Scanner(new File("ItemList.txt"));
             while(read.hasNextLine()) {
@@ -29,9 +29,9 @@ public class ItemGenerator {
         }
     }
 
-     /** Checks for the instance of the ItemGenerator and making sure that 
-      * the object has not already been created
-      */
+    /** Checks for the instance of the ItemGenerator and making sure that 
+     * the object has not already been created
+     */
     public static ItemGenerator getInstance(){
         if (instance == null){
             instance = new ItemGenerator();
@@ -52,25 +52,23 @@ public class ItemGenerator {
      * @return the health potion or null if there is none
      */
     public Item getPotion() {
-        Prototype potion = null;
         for (int i = 0; i < itemList.size(); i++) {
             if (itemList.get(i).getType() == 'p') {
-                potion = itemList.get(i).clone();
+                return itemList.get(i);
             }
         }
-        return (Item) potion;
+        return null;
     }
 
     /** Retrieves a key from the hero's inventory
      * @return the key or null if there is none
      */
     public Item getKey() {
-        Prototype key = null;
         for (int i = 0; i < itemList.size(); i++) {
             if (itemList.get(i).getType() == 'k') {
-                key = itemList.get(i).clone();
+                return itemList.get(i);
             }
         }
-        return (Item) key;
+        return null;
     }
 }

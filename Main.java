@@ -11,11 +11,11 @@ public class Main {
         String name = CheckInput.getString();
         
         int level = 1; //Start at level 1 and create all necessary objects 
-        Map map = new Map();
+        Map map = Map.getInstance();
         map.loadMap(level);
         Hero hero = new Hero(name, map);
-        ItemGenerator ig = new ItemGenerator();
-        EnemyGenerator eg = new EnemyGenerator(ig);
+        ItemGenerator ig = ItemGenerator.getInstance();
+        EnemyGenerator eg = EnemyGenerator.getInstance();
 
         int choice = 0;
         while (hero.getHP() != 0) { //continue game as long as hero isn't dead
@@ -367,7 +367,7 @@ public class Main {
                 System.out.println("Which item would you like to buy?");
                 System.out.println("1. Key - 50 Gold\n2. Health Potion - 25 Gold");
                 int buyChoice = CheckInput.getIntRange(1, 2);
-                ItemGenerator ig = new ItemGenerator();
+                ItemGenerator ig = ItemGenerator.getInstance();
                 if (buyChoice == 1) { //option to buy a key
                     Item item = ig.getKey(); //retrieves a key
                     if (h.getGold() < item.getValue()) {

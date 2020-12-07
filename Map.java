@@ -12,7 +12,7 @@ public class Map {
   private static Map instance = null; 
 
   /** Constructs a 5 x 5 map and 5 x 5 revealed */
-  public Map() {
+  private Map() {
     map = new char [5][5];
     revealed = new boolean [5][5];
   }
