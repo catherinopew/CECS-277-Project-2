@@ -70,10 +70,11 @@ public class Hero extends Entity implements Magical {
      * Once healed, remove potion from the inventory
      */
     public void drinkPotion() {
-        heal(getMaxHP()); //heal with maxHP amount b/c potion is +25
         for (int i = 0; i < items.size(); i++) {
             if (items.get(i).getName().equals("Health Potion")) {
-                dropItem(i);
+                heal(getMaxHP()); //heal with maxHP amount b/c potion is +25
+                items.remove(i);
+                break;
             }
         }
     }
