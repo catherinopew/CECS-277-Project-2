@@ -281,6 +281,7 @@ public class Hero extends Entity implements Magical {
         for (int i = 0; i < items.size(); i++) {
             if (items.get(i).getType() == 'k') {
                 dropItem(i);
+                break;
             }
         }
     }
