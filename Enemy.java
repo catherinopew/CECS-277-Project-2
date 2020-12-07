@@ -1,7 +1,5 @@
-import java.util.Random;
-
 /** Enemy class that extends Entity class */
-public class Enemy extends Entity {
+public abstract class Enemy extends Entity {
     /** An enemy's item of type Item */
     private Item item;
     
@@ -26,12 +24,5 @@ public class Enemy extends Entity {
      * @param e the hero who is being attacked
      * @return String the attack message
      */
-    @Override
-    public String attack(Entity e) {
-        Random rand = new Random();
-        int damage = rand.nextInt(5) + 1;
-        e.takeDamage(damage);
-        return getName() + " attacks " + e.getName() 
-        + " for " + damage + " damage.";
-    }
+    public abstract String attack(Entity e); 
 }
