@@ -4,7 +4,7 @@ import java.util.Random;
  * A program of a dungeon maze game where you are the hero
  * 
  * @author Catherine Bui and Jacob Sunia
- * @version 12/05/2020
+ * @version 12/07/2020
  */
 public class Main {
 	/**
