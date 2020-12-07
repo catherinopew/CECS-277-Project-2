@@ -42,12 +42,8 @@ public class EnemyGenerator {
     public Enemy generateEnemy(int level) {
         Random rand = new Random();
         int ran = (int)(Math.random() * enemyList.size());
-        int counter = 2; //health boost
         int occurrence = 0;
-
-        Enemy physical = new Enemy(enemyList.get(ran).getName(), 
-        enemyList.get(ran).getMaxHP()+(counter * level), 
-        enemyList.get(ran).getItem()); //creates a random base enemy
+        Enemy physical = enemyList.get(ran); //creates a random base enemy
 
         if (level > 1) { //stack if level greater than 1
             occurrence = rand.nextInt(2) + 1;
