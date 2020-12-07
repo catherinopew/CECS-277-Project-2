@@ -53,17 +53,14 @@ public class EnemyGenerator {
             occurrence = rand.nextInt(2) + 1;
             int stack = 0;
 
-            if (occurrence == 1) { //stack Warrior
-                while (stack != level - 1) {
-                    physical = new Warrior(physical);
-                    stack++;
+            while (stack != level - 1) {
+                if (occurrence == 1) {
+                    physical = new Warrior(physical); //stack Warrior
                 }
-            }
-            else {
-                while (stack != level - 1) { //stack Warlock
-                    physical = new Warlock(physical);
-                    stack++;
+                else {
+                    physical = new Warlock(physical); //stack Warlock
                 }
+                stack++;
             }
         }
         return physical;   
