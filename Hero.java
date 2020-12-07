@@ -202,7 +202,7 @@ public class Hero extends Entity implements Magical {
 	@Override
 	public String attack(Entity e) {
 		Random rand = new Random();
-		int damage = rand.nextInt(15) + 1; // random amount of damage 1-7
+		int damage = rand.nextInt(10) + 1; // random amount of damage 1-7
 		e.takeDamage(damage);
 
 		return getName() + " attacks " + e.getName() + " for " + damage + " damage.";

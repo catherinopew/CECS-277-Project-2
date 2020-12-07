@@ -1,7 +1,7 @@
 import java.util.Random;
 
 /** Warlock is a decorator to each enemy type that uses magical attacks */
-public class Warlock extends Enemy_Decorator implements Magical {
+public class Warlock extends EnemyDecorator implements Magical {
 	/**
 	 * Warlock is the constructor that takes in the enemy to get the object of the
 	 * superclass

@@ -42,8 +42,8 @@ public class Main {
 				break;
 			}
 
-			if (monsterRoom(hero, map, eg, level) == true) { // monster room
-				Enemy enemy = eg.getInstance().generateEnemy(level);
+            if (monsterRoom(hero, map, eg, level) == true) { // monster room
+				Enemy enemy = eg.generateEnemy(level);
 				System.out.println("You've encountered a " + enemy.getName());
 				while (fight(hero, enemy) == true)
 					;
@@ -53,16 +53,12 @@ public class Main {
 					map.removeCharAtLoc(hero.getLocation());
 
 					if (hero.getNumItems() == 5) { // give hero option to replace item if bag full
-						System.out
-								.println("Your inventory is full. Do you still want " + "to pick up this item (Y/N)? ");
+                        System.out.println("Your inventory is full. Do you still want " + 
+                        "to pick up this item (Y/N)? ");
 						boolean itemChoice = CheckInput.getYesNo();
 						if (itemChoice == true) { // ask if user wants to replace an item
-							System.out.println(
-									"Which item number would you like to drop? " + "\n" + hero.itemsToString()); // show
-																													// them
-																													// the
-																													// current
-																													// inventory
+                            System.out.println("Which item number would you like to drop? " +
+                            "\n" + hero.itemsToString()); // shows current inventory
 							int itemNum = CheckInput.getIntRange(1, 5);
 							hero.dropItem(itemNum - 1);
 							System.out.println("You've chosen to drop an item and replaced it with a "
@@ -80,12 +76,8 @@ public class Main {
 			} else if (map.getCharAtLoc(hero.getLocation()) == 'n') { // empty room
 				System.out.println("There was nothing here.");
 			} else if (map.getCharAtLoc(hero.getLocation()) == 's') { // starting point
-				System.out.println("You're back at the start. Would you like to" + " visit the store? (Y/N)"); // option
-																												// for
-																												// user
-																												// to
-																												// visit
-																												// store
+                System.out.println("You're back at the start. Would you like to" + 
+                " visit the store? (Y/N)"); // option for user to visit store
 				boolean storeChoice = CheckInput.getYesNo();
 				if (storeChoice == true) { // visits store if user picks yes
 					store(hero);
@@ -98,15 +90,8 @@ public class Main {
 					hero.heal(hero.getMaxHP());
 					hero.useKey(); // consumes the key in possession
 				} else {
-					System.out.println(
-							"You encounter a door, but you don't have the key! " + "Find it to unlock the next level."); // message
-																															// for
-																															// when
-																															// you
-																															// don't
-																															// have
-																															// the
-																															// key
+                    System.out.println("You encounter a door, but you don't have the key! " + 
+                    "Find it to unlock the next level."); // when user doesn't have the key	
 				}
 			}
 		}
@@ -310,18 +295,11 @@ public class Main {
 			System.out.println("Your inventory is full. Do you still want " + "to pick up this item (Y/N)? ");
 			boolean itemChoice = CheckInput.getYesNo();
 			if (itemChoice == true) { // ask if user wants to replace an item
-				System.out.println("Which item number would you like to drop? " + "\n" + h.itemsToString()); // show
-																												// them
-																												// the
-																												// current
-																												// inventory
+                System.out.println("Which item number would you like to drop? " + 
+                "\n" + h.itemsToString()); // show the current inventory
 				int itemNum = CheckInput.getIntRange(1, 5);
-				System.out.println("You've chosen to drop an item and replaced it with a " + item.getName() + "."); // display
-																													// message
-																													// of
-																													// what
-																													// they
-																													// got
+                System.out.println("You've chosen to drop an item and replaced it with a "
+                + item.getName() + "."); // display message of what they got
 				h.dropItem(itemNum - 1);
 			} else { // otherwise, display message that user chose to not replace anything
 				System.out.println("You've chosen to not replace any of " + "your inventory items.");
@@ -357,8 +335,8 @@ public class Main {
 					if (h.getGold() < item.getValue()) {
 						System.out.println("You cannot afford this item!");
 					} else if (h.getNumItems() == 5) { // make user sell something if bag full
-						System.out.println(
-								"Your inventory is full! " + "You cannot buy this item. Please sell something.");
+                        System.out.println("Your inventory is full! " + 
+                        "You cannot buy this item. Please sell something.");
 					} else { // successfully bought message
 						h.spendGold(item.getValue());
 						h.pickUpItem(item);
@@ -369,8 +347,8 @@ public class Main {
 					if (h.getGold() < item.getValue()) {
 						System.out.println("You cannot afford this item!");
 					} else if (h.getNumItems() == 5) { // make user sell something if bag full
-						System.out.println(
-								"Your inventory is full!" + "You cannot buy this item. Please sell something.");
+                        System.out.println("Your inventory is full!" + 
+                        "You cannot buy this item. Please sell something.");
 					} else { // successfully bought message
 						h.spendGold(item.getValue());
 						h.pickUpItem(item);
@@ -379,14 +357,13 @@ public class Main {
 				}
 			} else if (choice == 2) { // option to sell an item
 				if (h.getNumItems() > 0) { // can sell item as long as there's something in bag
-					System.out.println("Which item number would you like to sell? " + "\n" + h.itemsToString()); // shows
-																													// current
-																													// inventory
+                    System.out.println("Which item number would you like to sell? " + 
+                    "\n" + h.itemsToString()); // shows current inventory
 					int itemNum = CheckInput.getIntRange(1, h.getNumItems());
 					Item item = h.dropItem(itemNum - 1);
 					h.collectGold(item.getValue()); // drops item, collects gold, and displays success message
-					System.out.println("You've chosen to sell a " + item.getName() + " and received " + item.getValue()
-							+ " gold.");
+                    System.out.println("You've chosen to sell a " + item.getName() + 
+                    " and received " + item.getValue() + " gold.");
 				} else { // inventory empty message
 					System.out.println("There is nothing to sell!");
 				}

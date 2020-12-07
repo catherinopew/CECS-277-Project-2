@@ -7,15 +7,6 @@ import java.io.FileNotFoundException;
 public class ItemGenerator {
     /** An ArrayList of the items */
     private ArrayList <Item> itemList = new ArrayList <Item> ();
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.io.File;
-import java.io.FileNotFoundException;
-
-/** ItemGenerator class that generates an item */
-public class ItemGenerator {
-	/** An ArrayList of the items */
-	private ArrayList<Item> itemList = new ArrayList<Item>();
 	/** The instance of the class */
 	private static ItemGenerator instance = null;
 

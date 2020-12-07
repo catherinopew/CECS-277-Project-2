@@ -1,12 +1,12 @@
-/** Enemy_Decorator is a abstract class that adds onto enemy name and max HP */
-public abstract class Enemy_Decorator extends Enemy {
+/** EnemyDecorator is a abstract class that adds onto enemy name and max HP */
+public abstract class EnemyDecorator extends Enemy {
 	/** Represents an Enemy object */
 	private Enemy enemy;
 	/** Represents an Item object */
 	private Item item;
 
 	/**
-	 * Enemy_Decorator is the constructor which the name and max HP can be changed
+	 * EnemyDecorator is the constructor which the name and max HP can be changed
 	 * based on the decoration called
 	 * 
 	 * @param e  the enemy
@@ -14,7 +14,7 @@ public abstract class Enemy_Decorator extends Enemy {
 	 * @param hp the enemy's hp
 	 * @param i  the enemy's item
 	 */
-	public Enemy_Decorator(Enemy e, String n, int hp, Item i) {
+	public EnemyDecorator(Enemy e, String n, int hp, Item i) {
 		super(n, hp, i);
 		enemy = e;
 		item = i;

@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Random;
 
 /** EnemyGenerator class that generates an enemy */
@@ -6,26 +5,9 @@ public class EnemyGenerator extends EnemyFactory {
 	/** A randomly generated item */
 	private ItemGenerator ig;
 	/** A instance of the enemyGenerator */
-	private static EnemyGenerator instance = null;
-
-	/** Constructs and adds each enemy to the ArrayList, enemyList */
-	@Override
-	public Enemy createEnemy() {
-		Random ran = new Random();
-		int type = ran.nextInt(4) + 1;
-		if (type == 1) {
-			return new Troll(ig.getInstance().generateItem());
-		} else if (type == 2) {
-			return new Froglok(ig.getInstance().generateItem());
-		} else if (type == 3) {
-			return new Orc(ig.getInstance().generateItem());
-		} else if (type == 4) {
-			return new Goblin(ig.getInstance().generateItem());
-		}
-		return new Goblin(ig.getInstance().generateItem());
-	}
-
-	/**
+    private static EnemyGenerator instance = null;
+    
+    /**
 	 * getInstance gets the instance of the enemy
 	 * 
 	 * @return the instance of the enemy
@@ -36,4 +18,35 @@ public class EnemyGenerator extends EnemyFactory {
 		}
 		return instance;
 	}
+
+    /**
+	 * Creates an enemy depending on the type
+	 * 
+	 * @param level is the level of the game
+	 * @return Enemy an enemy or decorated enemy based on level
+	 */
+	public Enemy generateEnemy(int level) {
+		Random rand = new Random();
+        int occurrence = 0;
+        ig = ItemGenerator.getInstance();
+		Enemy physical = createEnemy(ig);
+
+		if (level > 1) { // stack if level greater than 1
+			occurrence = rand.nextInt(2) + 1;
+			int stack = 0;
+
+			if (occurrence == 1) { // stack Warrior
+				while (stack != level - 1) {
+					physical = new Warrior(physical);
+					stack++;
+				}
+			} else {
+				while (stack != level - 1) { // stack Warlock
+					physical = new Warlock(physical);
+					stack++;
+				}
+			}
+		}
+		return physical;
+    }
 }
