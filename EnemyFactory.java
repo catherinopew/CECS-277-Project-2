@@ -1,23 +1,39 @@
+import java.util.*;
+
 /** EnemyFactory that creates enemies of different types */
-public class EnemyFactory {
-    /** Creates an enemy depending on the type
-     * @param type the type of enemy
-     * @param ig the item that the enemy holds onto
-     * @return Enemy an enemy
-     */
-    public Enemy createEnemy(int type, ItemGenerator ig) {
-        if (type == 1) {
-            return new Troll(ig.generateItem());
-        }
-        else if (type == 2) {
-            return new Froglok(ig.generateItem());
-        }
-        else if (type == 3) {
-            return new Orc(ig.generateItem());
-        }
-        else if (type == 4) {
-            return new Goblin(ig.generateItem());
-        }
-        return null;
-    }
+public abstract class EnemyFactory {
+	/**
+	 * Creates an enemy depending on the type
+	 * 
+	 * @param level is the level of the game
+	 * @return Enemy an enemy or decorated enemy based on level
+	 */
+	public Enemy generateEnemy(int level) {
+		Random rand = new Random();
+		int counter = 2; // health boost
+		int occurrence = 0;
+		Enemy physical = createEnemy();
+
+		if (level > 1) { // stack if level greater than 1
+			occurrence = rand.nextInt(2) + 1;
+			int stack = 0;
+
+			if (occurrence == 1) { // stack Warrior
+				while (stack != level - 1) {
+					physical = new Warrior(physical);
+					stack++;
+				}
+			} else {
+				while (stack != level - 1) { // stack Warlock
+					physical = new Warlock(physical);
+					stack++;
+				}
+			}
+		}
+		return physical;
+	}
+	/**
+	 * Creates an enemy depending on the type
+	 */
+	public abstract Enemy createEnemy();
 }
