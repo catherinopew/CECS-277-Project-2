@@ -8,11 +8,11 @@ public abstract class Enemy extends Entity {
 	 * 
 	 * @param n   the enemy's name
 	 * @param mHp the enemy's max hit points
-	 * @param i   the enemy's item
 	 */
-	public Enemy(String n, int mHp, Item i) {
-		super(n, mHp);
-		item = i;
+	public Enemy(String n, int mHp) {
+        super(n, mHp);
+        ItemGenerator ig = ItemGenerator.getInstance();
+        item = ig.generateItem();
 	}
 
 	/**

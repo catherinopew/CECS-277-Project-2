@@ -14,13 +14,13 @@ public class EnemyFactory {
         int type = ran.nextInt(4) + 1;
 
 		if (type == 1) { // creates a random enemy
-			return new Troll(ig.generateItem());
+			return new Troll();
 		} else if (type == 2) {
-			return new Froglok(ig.generateItem());
+			return new Froglok();
 		} else if (type == 3) {
-			return new Orc(ig.generateItem());
+			return new Orc();
 		} else if (type == 4) {
-			return new Goblin(ig.generateItem());
+			return new Goblin();
 		}
 		return null;
     }

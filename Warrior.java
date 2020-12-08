@@ -9,7 +9,7 @@ public class Warrior extends EnemyDecorator {
 	 * @param e is the enemy type that will be passed into Warlock
 	 */
 	public Warrior(Enemy e) {
-		super(e, "Warrior " + e.getName(), e.getMaxHP() + 2, e.getItem());
+		super(e, "Warrior " + e.getName(), e.getMaxHP() + 2);
 	}
 
 	/**

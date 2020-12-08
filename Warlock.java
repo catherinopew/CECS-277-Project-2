@@ -9,7 +9,7 @@ public class Warlock extends EnemyDecorator implements Magical {
 	 * @param e is the enemy type that will be passed into Warlock
 	 */
 	public Warlock(Enemy e) {
-		super(e, "Warlock " + e.getName(), e.getMaxHP() + 1, e.getItem());
+		super(e, "Warlock " + e.getName(), e.getMaxHP() + 1);
 	}
 
 	/**
