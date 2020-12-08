@@ -24,14 +24,11 @@ public class Warlock extends EnemyDecorator implements Magical {
         int random = rand.nextInt(3) + 1;
 
 		if (random == 1) {
-            return magicMissile(e) + 
-            "\n" + super.attack(e);
+            return magicMissile(e) + "\n" + super.attack(e);
 		} else if (random == 2) {
-            return fireball(e).replaceAll("Warlock", "") + 
-            "\n" + super.attack(e);
+            return fireball(e) + "\n" + super.attack(e);
 		} else {
-            return thunderclap(e).replaceAll("Warlock", "") + 
-            "\n" + super.attack(e);
+            return thunderclap(e) + "\n" + super.attack(e);
         }
 	}
 
