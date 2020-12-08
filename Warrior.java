@@ -23,6 +23,7 @@ public class Warrior extends EnemyDecorator {
 		Random rand = new Random();
 		int damage = rand.nextInt(7) + 1;
 		e.takeDamage(damage);
-		return getName() + " attacks " + e.getName() + " for " + damage + " damage." + "\n" + super.attack(e);
+		return getName().replaceAll("Warrior", "").replaceAll("\\s", "") 
+		+ " attacks " + e.getName() + " for " + damage + " damage." + "\n" + super.attack(e);
 	}
 }

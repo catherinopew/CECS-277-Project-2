@@ -21,14 +21,18 @@ public class Warlock extends EnemyDecorator implements Magical {
 	@Override
 	public String attack(Entity e) {
 		Random rand = new Random();
-		int random = rand.nextInt(3) + 1;
+        int random = rand.nextInt(3) + 1;
+
 		if (random == 1) {
-			return magicMissile(e) + "\n" + super.attack(e);
+            return magicMissile(e) + 
+            "\n" + super.attack(e);
 		} else if (random == 2) {
-			return fireball(e) + "\n" + super.attack(e);
+            return fireball(e).replaceAll("Warlock", "") + 
+            "\n" + super.attack(e);
 		} else {
-			return thunderclap(e) + "\n" + super.attack(e);
-		}
+            return thunderclap(e).replaceAll("Warlock", "") + 
+            "\n" + super.attack(e);
+        }
 	}
 
 	/**
@@ -43,7 +47,8 @@ public class Warlock extends EnemyDecorator implements Magical {
 		int damage = rand.nextInt(7) + 1;
 		e.takeDamage(damage);
 
-		return getName() + " hits " + e.getName() + " with a Fireball for " + damage + " damage.";
+        return getName().replaceAll("Warlock", "").replaceAll("\\s", "") 
+        + " hits " + e.getName() + " with a Fireball for " + damage + " damage.";
 	}
 
 	/**
@@ -58,7 +63,8 @@ public class Warlock extends EnemyDecorator implements Magical {
 		int damage = rand.nextInt(7) + 1;
 		e.takeDamage(damage);
 
-		return getName() + " hits " + e.getName() + " with a Magic Missle for " + damage + " damage.";
+        return getName().replaceAll("Warlock", "").replaceAll("\\s", "") 
+        + " hits " + e.getName() + " with a Magic Missle for " + damage + " damage.";
 	}
 
 	/**
@@ -73,6 +79,7 @@ public class Warlock extends EnemyDecorator implements Magical {
 		int damage = rand.nextInt(7) + 1;
 		e.takeDamage(damage);
 
-		return getName() + " zaps " + e.getName() + " with Thunderclap for " + damage + " damage.";
+        return getName().replaceAll("Warlock", "").replaceAll("\\s", "") 
+        + " zaps " + e.getName() + " with Thunderclap for " + damage + " damage.";
 	}
 }
